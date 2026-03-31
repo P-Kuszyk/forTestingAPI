@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const users = require('./users')
 
 //#region GET
 app.get('/', (req, res) => {
@@ -27,9 +28,4 @@ app.get('/users/:id', (req, res) => {
 app.listen(3000, () => {
     console.log('http://localhost:3000')
 })
-
-let users = [
-    {id: 1, name: "Przemek"},
-    {id: 2, name: "Kamil"}
-]
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const users = require('./database')
+const pool = require('./db')
 
 
 /* 
@@ -16,8 +16,9 @@ app.get('/', (req, res) => {
     res.send("API works")
 })
 
-app.get('/users', (req, res) => {
-    res.json(users)
+app.get('/users', async (req, res) => {
+    const result = await pool.query('SELECT * FROM users')
+    res.json(result.rows)
 })
 
 app.get('/users/:id', (req, res) => {
